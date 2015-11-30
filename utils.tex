@@ -1,0 +1,61 @@
+
+
+
+%% Дополнительные команды для удобства работы с проектом
+
+%% Вставляет 
+\newcommand{\draft}[2] {
+	\begin{quotation}
+		\begin{center}
+			\colorbox{BurntOrange}{\noindent\rule{12cm}{0.4pt}}
+		\end{center}
+		#1 \cite{#2}
+		\\
+Источник: \href{run:./materials/#2.pdf}{#2}
+		\begin{center}
+			\colorbox{BurntOrange}{\rule{12cm}{0.4pt}}
+		\end{center}
+	\end{quotation}
+}
+
+\newcommand{\etc}[2] {
+	\begin{quotation}
+		#1
+		Источник: \href{run:./etc/#2}{#2}
+	\end{quotation}
+}
+
+\newcommand{\idea}[1] {
+	\begin{quotation}
+		\begin{center}
+			\colorbox{NavyBlue}{\noindent\rule{12cm}{0.4pt}}
+		\end{center}
+		#1 \\
+		\begin{center}
+			\colorbox{NavyBlue}{\noindent\rule{12cm}{0.4pt}}
+		\end{center}
+	\end{quotation}
+}
+
+%% Команда для отображения ссылки на список лит-ры и файл данной статьи в materials
+\newcommand{\citelink}[1] {
+	\cite{#1} \href{run:./materials/#1}{(link)}
+}
+
+%% Команда для отображения ссылки на файл в доп.материалах в папке etc
+\newcommand{\etclink}[1] {
+	\href{run:./etc/#1}{(link)}
+}
+
+%% Команда для отображения ссылки на файл в доп.материалах в папке src
+\newcommand{\srclink}[1] {
+	\href{run:./src/#1}{(link)}
+}
+
+
+%%%%%%%   Исправления для операторов argmin и argmax   %%%%%%%%%%%%%
+
+\DeclareMathOperator*{\argmin}{\arg\!\min}
+\DeclareMathOperator*{\argmax}{\arg\!\max}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,165 @@
+%%% Поля и разметка страницы %%%
+\documentclass[a4paper,12pt]{article}
+\usepackage{lscape}		% Для включения альбомных страниц
+
+%%% Кодировки и шрифты %%%
+\usepackage{cmap}						% Улучшенный поиск русских слов в полученном pdf-файле
+\usepackage[T2A]{fontenc}				% Поддержка русских букв
+\usepackage[utf8]{inputenc}				% Кодировка utf8
+\usepackage[russian,english]{babel}	% Языки: русский, английский
+% %\usepackage{pscyr}						% Красивые русские шрифты
+
+%%% Математические пакеты %%%
+\usepackage{amsthm,amsfonts,amsmath,amssymb,amscd} % Математические дополнения от AMS
+
+%%% Оформление абзацев %%%
+\usepackage{indentfirst} % Красная строка
+
+%%% Поддержка алгоритмов
+\usepackage[]{algorithm2e}
+
+%%% Цвета %%%
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{color}
+\usepackage{colortbl}
+
+%%% Таблицы %%%
+\usepackage{longtable}					% Длинные таблицы
+\usepackage{multirow,makecell,array}	% Улучшенное форматирование таблиц
+
+%%% Общее форматирование
+\usepackage[singlelinecheck=off,center]{caption}	% Многострочные подписи
+\usepackage{soul}									% Поддержка переносоустойчивых подчёркиваний и зачёркиваний
+
+%%% Библиография %%%
+\usepackage{cite} % Красивые ссылки на литературу
+
+%%% Комментарии %%%
+\usepackage{verbatim}
+
+%%% Гиперссылки %%%
+\usepackage[plainpages=false,pdfpagelabels=false]{hyperref}
+\definecolor{linkcolor}{rgb}{0.9,0,0}
+\definecolor{citecolor}{rgb}{0,0.6,0}
+\definecolor{urlcolor}{rgb}{0,0,1}
+\hypersetup{
+    colorlinks, linkcolor={linkcolor},
+    citecolor={citecolor}, urlcolor={urlcolor}
+}
+
+%%% Дополнительные цвета %%%
+\usepackage{colortbl}
+
+%%% Подключаем файл с удобными коммандами %%%
+%%% \citelink{} - позволяет добавить не просто номер источника, но и гиперссылку на него(при этом файл источника должен лежать в папке с )
+%%% \etclink{} -  позволяет добавить ссылку на файл доп.материала (надо указать имя файла из папки etc вместе с расширением)
+%%% \srclink{} -  позволяет добавить ссылку на файл исходника (надо указать имя файла из папки src вместе с расширением)
+\input{utils.tex}
+
+%%% Ссылки на локальные файлы %%%
+\usepackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% Изображения %%%
+\usepackage{graphicx}		% Подключаем пакет работы с графикой
+\graphicspath{{images/}}	% Пути к изображениям
+
+%%% Выравнивание и переносы %%%
+\sloppy					% Избавляемся от переполнений
+\clubpenalty=10000		% Запрещаем разрыв страницы после первой строки абзаца
+\widowpenalty=10000		% Запрещаем разрыв страницы после последней строки абзаца
+
+%%% Библиография %%%
+\makeatletter
+\bibliographystyle{ugost2008}	% Оформляем библиографию в соответствии с ГОСТ 2008
+\renewcommand{\@biblabel}[1]{#1.}	% Заменяем библиографию с квадратных скобок на точку:
+\makeatother
+
+%%% Колонтитулы %%%
+\let\Sectionmark\sectionmark
+\def\sectionmark#1{\def\Sectionname{#1}\Sectionmark{#1}}
+\makeatletter
+\newcommand*{\currentname}{\@currentlabelname}
+\renewcommand{\@oddhead}{\it \vbox{\hbox to \textwidth%
+    {\hfil  --- Рабочие материалы --- \hfil\strut}\hbox to \textwidth%
+    {\today \hfil \thesection~\Sectionname\strut}\hrule}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+{~}\bigskip
+\begin{center}
+\Huge{Тема работы}
+\end{center}
+
+\section{Введение}
+
+Тема состоит в том, чтобы 
+\begin{itemize}
+	\item Задача 1
+	\item Задача 2
+	\item Задача 3
+\end{itemize}
+
+На мой взгляд лучший способ освоить эту тему состоит в следующем:
+\begin{itemize}
+	\item написать реферат по классическим статьям представленным ниже
+	\item читать подготовить обзор современных направлений
+	\item делать практическую работы \textbf{в следующем формате}
+\end{itemize}
+
+\section{Мотивационное письмо}
+
+Для чего нужно развивать данное направление, почему оно перспективно. Какие перспективы это даёт.
+
+\section{Оборудование (опционально)}
+
+
+
+\section{Реферат}
+
+Чтобы написать реферат достаточно дать развёрнутый ответ на следующие вопросы:\\
+Что такое \textbf{главный термин}?\\
+Для каких целей предназначен \textbf{главный термин}?\\
+Какова математическая основа \textbf{главный термин}?\\
+Каков алгоритм \textbf{главный термин}(описание, схема, плюсы и минусы)?\\
+и т.д.\\
+
+\section{Материал}
+
+Основным источником по теме является \textbf{ключевая статья}. Файлы с основными статьями размещаются в папке materials (файлы pdf должны имень имена такие же как ключи bibtex).
+
+
+\section{План работы}
+
+\begin{enumerate}
+	\item сделать реферат по \textbf{ключевая статья} в LaTeX
+	\item выполнить первое практическое задание (реализовать простейший случай и провести эксперимент)
+	\item дополнить реферат из других источников
+	\item подготовить презентацию по этой теме для семинара
+	\item расширить и задокументировать программу
+	\item провести итоговый эксперимент и задокументировать сделанное
+	\item оформить работу
+\end{enumerate}
+
+
+\section{Задания с датами}
+
+Место для конкретных заданий с датами.
+
+\section{Дополнительно}
+
+Далее собраны полезные рекомендации, которые помогут вам успешно справиться.\\
+
+\href{http://compvis.isu.ru/wp-content/uploads/2015/11/PracticalScienceMethodology_1.pdf}{Практические советы по ведению научной работы}
+
+\href{http://compvis.isu.ru/?p=389}{Инструкция для начинающих по работе с LaTeX}\\
+
+
+\addcontentsline{toc}{chapter}{\bibname}	% Добавляем список литературы в оглавление
+\bibliography{biblio}						% Подключаем BibTeX-базы
+
+\end{document}
